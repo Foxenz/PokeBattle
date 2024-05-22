@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar>
+  <v-toolbar class="test">
     <v-toolbar-title>Créateur d'équipe Pokémon</v-toolbar-title>
     <v-toolbar-items>
       <v-btn to="/">Home</v-btn>
@@ -19,5 +19,10 @@ export default {
 nav {
   display: flex;
   gap: 1rem;
+}
+
+.test {
+  background-color: #0a141e;
+  color: yellow;
 }
 </style>
