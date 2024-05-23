@@ -1,13 +1,10 @@
 <template>
   <v-app>
-    <v-container class="container">
-      <SideBar />
-      <v-main class="right_pane">
-        <Result />
-        <CardComponent />
-      </v-main>
-    </v-container>
-
+    <SideBar />
+    <v-main class="right_pane">
+      <Result />
+      <CardComponent />
+    </v-main>
   </v-app>
 </template>
 
