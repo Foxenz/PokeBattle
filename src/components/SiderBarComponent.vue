@@ -6,6 +6,11 @@
                     <v-col cols="12">
                         <v-card color="#385F73">
                             <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover height="100px">
+                                <template v-slot:placeholder>
+                                    <div class="d-flex align-center justify-center fill-height">
+                                        <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+                                    </div>
+                                </template>
                             </v-img>
                             <v-card-title>
                                 Listen to your favorite artists and albums whenever and wherever, online and offline.
