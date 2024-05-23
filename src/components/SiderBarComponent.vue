@@ -1,8 +1,63 @@
 <template>
-    <v-navigation-drawer class="left_pane">
-        <v-card class="d-flex justify-center">
-            <v-card-item title="Drawer left"></v-card-item>
-        </v-card>
+    <v-navigation-drawer class="left_pane py-4">
+        <v-container class="d-flex align-center flex-column">
+            <v-container>
+                <v-row dense>
+                    <v-col cols="12">
+                        <v-card color="#385F73">
+                            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover height="100px">
+                            </v-img>
+                            <v-card-title>
+                                Listen to your favorite artists and albums whenever and wherever, online and offline.
+                            </v-card-title>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </v-container>
+            <v-container>
+                <v-row dense>
+                    <v-col cols="12">
+                        <v-card color="#385F73">
+                            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover height="100px">
+                            </v-img>
+                            <v-card-title>
+                                Listen to your favorite artists and albums whenever and wherever, online and offline.
+                            </v-card-title>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </v-container>
+            <v-container>
+                <v-row dense>
+                    <v-col cols="12">
+                        <v-card color="#385F73">
+                            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover height="100px">
+                            </v-img>
+                            <v-card-title>
+                                Listen to your favorite artists and albums whenever and wherever, online and offline.
+                            </v-card-title>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </v-container>
+            <v-container>
+                <v-row dense>
+                    <v-col cols="12">
+                        <v-card color="#385F73">
+                            <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover height="100px">
+                            </v-img>
+                            <v-card-title>
+                                Listen to your favorite artists and albums whenever and wherever, online and offline.
+                            </v-card-title>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </v-container>
+
+            <v-card-actions class="my-4">
+                <v-btn rounded="lg" variant="outlined" color="grey-darken">Button</v-btn>
+            </v-card-actions>
+        </v-container>
     </v-navigation-drawer>
 </template>
 
