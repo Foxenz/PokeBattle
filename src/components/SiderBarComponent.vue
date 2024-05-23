@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <v-navigation-drawer expand-on-hover rail class="left_pane">
-            hello side bar
-        </v-navigation-drawer>
-    </div>
+    <v-navigation-drawer class="left_pane">
+        <v-card class="d-flex justify-center">
+            <v-card-item title="Drawer left"></v-card-item>
+        </v-card>
+    </v-navigation-drawer>
 </template>
 
 <script>
