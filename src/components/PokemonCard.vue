@@ -1,5 +1,5 @@
 <template>
-  <div class="pokemon-card">
+  <div class="pokemon-card" draggable="true" @dragstart="onDragStart">
     <img :src="pokemon.picture" alt="pokemon" />
     <p>{{ pokemon.name }}</p>
   </div>
@@ -8,9 +8,13 @@
 <script>
 export default {
   name: 'PokemonCard',
-
   props: {
     pokemon: Object
+  },
+  methods: {
+    onDragStart(event) {
+      event.dataTransfer.setData('pokemon', JSON.stringify(this.pokemon))
+    }
   }
 }
 </script>
