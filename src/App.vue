@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <!-- <header>
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Presentation page</RouterLink>
@@ -8,7 +8,7 @@
         <RouterLink to="/info-pokemon/1">Info pokemon</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
   <RouterView />
 </template>

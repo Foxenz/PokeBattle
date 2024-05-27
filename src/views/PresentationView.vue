@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
+import NavBar from '../components/Navbar.vue'
 import apiHandler from '@/services/ApiHandler.js'
 
 export default {
