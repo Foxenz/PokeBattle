@@ -1,5 +1,6 @@
 <template>
-    <v-navigation-drawer class="left_pane py-4">
+    <v-app-bar-nav-icon variant="text" @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-navigation-drawer v-model="drawer" class="left_pane py-4">
         <v-container class="d-flex align-center flex-column">
             <v-container>
                 <v-row dense>
@@ -12,7 +13,7 @@
                                     </div>
                                 </template>
                             </v-img>
-                            <v-card-title>
+                            <v-card-title class="caption">
                                 Listen to your favorite artists and albums whenever and wherever, online and offline.
                             </v-card-title>
                         </v-card>
@@ -70,5 +71,8 @@
 export default {
     name: 'SideBar',
     props: [],
+    data: () => ({
+        drawer: false,
+    })
 }
 </script>

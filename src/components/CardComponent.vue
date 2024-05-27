@@ -11,11 +11,11 @@
                                 </div>
                             </template>
                         </v-img>
-                        <v-card-title>
+                        <v-card-title class="text_style">
                             {{ item.name }}
                         </v-card-title>
                         <v-card-text class="caption">
-                            I'm a thing. But, like most politicians, he promised more than he could deliver. You won't
+                            {{ item.description || 'No description found' }}
                         </v-card-text>
                     </v-card>
 
@@ -30,9 +30,15 @@ export default {
     name: 'Card',
     props: ['pokeData'],
     data() {
-        return {}
+        return {
+
+        }
     }
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.text_style {
+    text-transform: capitalize;
+}
+</style>
