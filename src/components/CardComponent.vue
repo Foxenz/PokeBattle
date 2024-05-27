@@ -1,9 +1,9 @@
 <template>
     <div>
         <v-container>
-            <v-row justify="center" no-gutters>
-                <v-col v-for="n in 30" class="my-3 d-flex justify-center">
-                    <v-card class="mx-2 mb-2" max-width="250px">
+            <v-row no-gutters>
+                <v-col v-for="item in pokeData" :key="item.name" class="my-3 d-flex justify-center">
+                    <v-card class="mx-2 mb-2" width="280px">
                         <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover>
                             <template v-slot:placeholder>
                                 <div class="d-flex align-center justify-center fill-height">
@@ -12,7 +12,7 @@
                             </template>
                         </v-img>
                         <v-card-title>
-                            Title Goes Here
+                            {{ item.name }}
                         </v-card-title>
                         <v-card-text class="caption">
                             I'm a thing. But, like most politicians, he promised more than he could deliver. You won't
@@ -28,6 +28,7 @@
 <script>
 export default {
     name: 'Card',
+    props: ['pokeData'],
     data() {
         return {}
     }
