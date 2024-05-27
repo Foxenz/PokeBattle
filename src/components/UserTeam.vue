@@ -11,7 +11,7 @@
     </div>
 
     <div class="text-center">
-      <v-icon color="red" icon="mdi-delete" size="large" @click="deleteTeam"></v-icon>
+      <v-icon color="yellow" icon="mdi-delete" size="large" @click="deleteTeam"></v-icon>
     </div>
   </div>
 </template>
@@ -57,6 +57,7 @@ export default {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50px;
     margin-bottom: 10px;
+    border: 1px dashed white;
   }
 
   .pokemon-slot:hover {

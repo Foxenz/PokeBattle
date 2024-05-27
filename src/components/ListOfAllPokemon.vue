@@ -1,7 +1,22 @@
 <template>
   <section>
+    <div class="text-center">
+      <v-autocomplete
+        :items="pokemons"
+        item-title="name"
+        item-value="id"
+        class="text-white"
+        clearable
+        label="Rechercher un pokémon"
+        variant="outlined"
+        prepend-inner-icon="mdi-magnify"
+        no-data-text="Aucun pokémon trouvé"
+        @update:modelValue="searchPokemon($event)"
+      />
+    </div>
+
     <div class="list-container">
-      <div class="pokemon-info" v-for="pokemon in pokemons" :key="pokemon.id">
+      <div class="pokemon-info" v-for="pokemon in filteredPokemons" :key="pokemon.id">
         <PokemonCard :pokemon="pokemon" />
       </div>
     </div>
@@ -18,13 +33,25 @@ export default {
 
   data() {
     return {
-      pokemons: []
+      pokemons: [],
+      filteredPokemons: []
     }
   },
 
   methods: {
     async loadAllPokemons() {
       this.pokemons = await apiHandler.fetchAllPokemonWithPictures()
+      this.filteredPokemons = this.pokemons
+    },
+
+    searchPokemon(search) {
+      if (!search) {
+        this.filteredPokemons = this.pokemons
+      } else {
+        this.filteredPokemons = this.pokemons.filter((pokemon) => {
+          return pokemon.name.toLowerCase().includes(search.toLowerCase())
+        })
+      }
     }
   },
 
@@ -36,16 +63,26 @@ export default {
 
 <style scoped lang="scss">
 section {
-  max-height: 750px;
   width: 75%;
-  overflow: auto;
-  color: yellow;
+
+  .searchInput {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid white;
+    background-color: #0a141e;
+    color: white;
+  }
 
   .list-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     position: relative;
     padding: 10px;
+    max-height: 675px;
+    overflow: auto;
+    width: 100%;
   }
 }
 ::-webkit-scrollbar {
