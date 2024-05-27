@@ -27,7 +27,7 @@
 
 <script>
 export default {
-    name: 'Card',
+    name: 'Card-item',
     props: ['pokeData'],
     data() {
         return {
