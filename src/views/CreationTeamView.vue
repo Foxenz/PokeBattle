@@ -31,6 +31,7 @@ export default {
     return {
       title: 'Creation team page',
       pokemonList: [],
+      images: [{}],
       text: '',
     }
   },
@@ -52,6 +53,16 @@ export default {
         // Store fetch PokemonData in the array pokemonlist
         this.pokemonList = allPokemon;
         console.log(this.pokemonList);
+      } catch (e) {
+        console.log('error fetching Pokemon:', error);
+      }
+    },
+    async fetchPokemonImages() {
+      try {
+        const allPokemonImg = await ApiHandler.fetchPokemonPicture(id);
+        // Store fetch PokemonData in the array pokemonlist
+        this.images = allPokemonImg;
+        console.log(this.images);
       } catch (e) {
         console.log('error fetching Pokemon:', error);
       }
