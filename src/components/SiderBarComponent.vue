@@ -1,6 +1,6 @@
 <template>
     <v-app-bar-nav-icon variant="text" @click="drawer = !drawer"></v-app-bar-nav-icon>
-    <v-navigation-drawer v-model="drawer" class="left_pane py-4">
+    <v-navigation-drawer v-model="drawer" class="left_pane py-4 bg-lime-darken-3">
         <v-container class="d-flex align-center flex-column">
             <v-container>
                 <v-row dense>
@@ -73,6 +73,7 @@ export default {
     props: [],
     data: () => ({
         drawer: false,
+        isHovering: true
     })
 }
 </script>
