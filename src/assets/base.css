@@ -30,8 +30,10 @@ body {
 #app {
   height: auto;
 }
-h1 {
-  font-family: 'Pokemon-Hollow', sans-serif;
+.v-card-title {
+  font-family: 'Pokemon-solid', sans-serif;
+  letter-spacing: 0.5rem;
+  color: #ffd740 !important;
 }
 
 .pokemon-font-hollow {
