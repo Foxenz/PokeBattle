@@ -3,8 +3,8 @@
         <v-container>
             <v-row no-gutters>
                 <v-col v-for="item in pokeData" :key="item" class="my-3 d-flex justify-center">
-                    <v-card class="mx-2 mb-2" flat width="280px">
-                        <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover>
+                    <v-card class="mx-2 mb-2" elevation="3" width="280px">
+                        <v-img height="200px" :src="item.imageUrl" contain>
                             <template v-slot:placeholder>
                                 <div class="d-flex align-center justify-center fill-height">
                                     <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>

@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar-nav-icon variant="text" @click="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar-nav-icon variant="text" class="bg-white mt-4 mx-4" @click="drawer = !drawer"></v-app-bar-nav-icon>
     <v-navigation-drawer v-model="drawer" class="left_pane py-4 bg-lime-darken-3">
         <v-container class="d-flex align-center flex-column">
             <v-container>

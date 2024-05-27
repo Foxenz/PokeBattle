@@ -31,7 +31,7 @@ export default {
     return {
       title: 'Creation team page',
       pokemonList: [],
-      images: [{}],
+      images: [],
       text: '',
     }
   },
@@ -50,24 +50,21 @@ export default {
     async fetchAllPokemon() {
       try {
         const allPokemon = await ApiHandler.fetchPokemonList();
-        // Store fetch PokemonData in the array pokemonlist
-        this.pokemonList = allPokemon;
+        // Fetch images for each Pokémon
+        const pokemonWithImages = await Promise.all(allPokemon.map(async (pokemon) => {
+          const imageUrl = await ApiHandler.fetchPokemonPicture(pokemon.name);
+          return { ...pokemon, imageUrl };
+        }));
+        this.pokemonList = pokemonWithImages;
         console.log(this.pokemonList);
-      } catch (e) {
-        console.log('error fetching Pokemon:', error);
+      } catch (error) {
+        console.log('error fetching Pokémon:', error);
       }
     },
-    async fetchPokemonImages() {
-      try {
-        const allPokemonImg = await ApiHandler.fetchPokemonPicture(id);
-        // Store fetch PokemonData in the array pokemonlist
-        this.images = allPokemonImg;
-        console.log(this.images);
-      } catch (e) {
-        console.log('error fetching Pokemon:', error);
-      }
+    handleSearch(searchText) {
+      this.text = searchText;
     }
-  },
+  }
 }
 
 </script>

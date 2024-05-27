@@ -41,6 +41,7 @@ export default {
       ]
       const results = await Promise.all(promises)
       this.items = results.map((src) => ({ src }))
+      console.log(this.items);
     }
   },
 
