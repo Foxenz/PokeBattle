@@ -9,6 +9,10 @@
     >
       <img v-if="pokemon" :src="pokemon.picture" alt="pokemon" />
     </div>
+
+    <div class="text-center">
+      <v-icon color="red" icon="mdi-delete" size="large" @click="deleteTeam"></v-icon>
+    </div>
   </div>
 </template>
 
@@ -17,16 +21,20 @@ export default {
   name: 'UserTeam',
   data() {
     return {
-      team: [null, null, null, null, null, null],
-      test: null
+      team: [null, null, null, null, null, null]
     }
   },
   methods: {
     allowDrop(event) {
       event.preventDefault()
     },
+
     onDrop(index, event) {
       this.team[index] = JSON.parse(event.dataTransfer.getData('pokemon'))
+    },
+
+    deleteTeam() {
+      this.team = [null, null, null, null, null, null]
     }
   }
 }
