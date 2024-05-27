@@ -2,8 +2,8 @@
     <div>
         <v-container>
             <v-row no-gutters>
-                <v-col v-for="item in pokeData" :key="item.name" class="my-3 d-flex justify-center">
-                    <v-card class="mx-2 mb-2" width="280px">
+                <v-col v-for="item in pokeData" :key="item" class="my-3 d-flex justify-center">
+                    <v-card class="mx-2 mb-2" flat width="280px">
                         <v-img height="200px" src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover>
                             <template v-slot:placeholder>
                                 <div class="d-flex align-center justify-center fill-height">
