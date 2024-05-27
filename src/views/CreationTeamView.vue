@@ -10,6 +10,14 @@
             </v-text-field>
           </v-row>
         </v-container>
+        <v-container>
+          <v-col class="justify-center">
+            <!-- Display error message if fetchError is not empty -->
+            <v-alert v-if="errorMessage" type="error" dismissible class="text-center">
+              {{ errorMessage }}
+            </v-alert>
+          </v-col>
+        </v-container>
       </Result>
       <CardComponent :pokeData='filteredSearch' />
     </v-main>
@@ -33,6 +41,7 @@ export default {
       pokemonList: [],
       images: [],
       text: '',
+      errorMessage: ''
     }
   },
   created() {
@@ -58,7 +67,7 @@ export default {
         this.pokemonList = pokemonWithImages;
         console.log(this.pokemonList);
       } catch (error) {
-        console.log('error fetching Pokémon:', error);
+        this.errorMessage = 'Oh Oh Something went wrong please try again later!'
       }
     },
     handleSearch(searchText) {
