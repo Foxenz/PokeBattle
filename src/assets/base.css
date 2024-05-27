@@ -30,6 +30,9 @@ body {
 #app {
   height: auto;
 }
+h1 {
+  font-family: 'Pokemon-Hollow', sans-serif;
+}
 
 .pokemon-font-hollow {
   font-family: 'Pokemon-Hollow', sans-serif;

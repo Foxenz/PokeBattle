@@ -2,7 +2,7 @@
     <div>
         <v-container>
             <v-row no-gutters jus>
-                <v-col cols="2" v-for="item in pokeData" :key="item" class="my-3 d-flex justify-center">
+                <v-col v-for="item in pokeData" :key="item" class="my-3 d-flex justify-center">
                     <v-card class="mx-2 mb-2 pointer" elevation="3" width="280px">
                         <v-img height="200px" :src="item.imageUrl" contain>
                             <template v-slot:placeholder>
