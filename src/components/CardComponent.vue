@@ -17,21 +17,32 @@
                         <v-card-text class="caption">
                             {{ item.description || 'No description found' }}
                         </v-card-text>
+                        <Modal class="mx-1 mb-1" :modalData="selectedCard" />
                     </v-card>
 
                 </v-col>
             </v-row>
         </v-container>
+
     </div>
 </template>
 
 <script>
+import Modal from '../components/ModalComponent.vue';
 export default {
     name: 'Card-item',
     props: ['pokeData'],
+    components: { Modal },
     data() {
         return {
-
+            dialog: false,
+            selectedCard: {}
+        }
+    },
+    methods: {
+        showDetails(item) {
+            this.selectedCard = item;
+            this.dialog = true;
         }
     }
 }
