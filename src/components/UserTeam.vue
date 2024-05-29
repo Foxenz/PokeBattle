@@ -7,7 +7,7 @@
       @drop="onDrop(index, $event)"
       @dragover="allowDrop($event)"
     >
-      <img v-if="pokemon" :src="pokemon.picture" alt="pokemon" />
+      <img v-if="pokemon" :src="pokemon.sprites.front_default" alt="pokemon" />
     </div>
 
     <div class="text-center">
@@ -24,6 +24,7 @@ export default {
       team: [null, null, null, null, null, null]
     }
   },
+
   methods: {
     allowDrop(event) {
       event.preventDefault()
@@ -45,9 +46,9 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  border: 2px solid white;
   padding: 25px;
   height: 100%;
+  background-color: #0a141e;
 
   .pokemon-slot {
     background-size: contain;

@@ -1,7 +1,15 @@
 <template>
   <div class="pokemon-card" draggable="true" @dragstart="onDragStart">
-    <img :src="pokemonCard.picture" alt="pokemon" />
-    <p>{{ pokemonCard.name }}</p>
+    <div class="w-100 text-right">
+      <v-btn :to="'/info-pokemon/' + pokemonCard.id" icon="mdi-information" variant="plain"></v-btn>
+    </div>
+    <img :src="pokemonCard.sprites.front_default" alt="pokemon" />
+    <p class="text-capitalize">{{ pokemonCard.name }}</p>
+    <div class="types w-100 d-flex justify-space-around">
+      <p class="type" :class="type.type.name" v-for="type in pokemonCard.types">
+        {{ type.type.name }}
+      </p>
+    </div>
   </div>
 </template>
 
@@ -15,31 +23,36 @@ export default {
     return {
       pokemonCard: {
         name: '',
-        picture: ''
-      },
+        sprites: {
+          front_default: ''
+        }
+      }
     }
   },
+
   props: {
     pokemon: Object
   },
+
   methods: {
     onDragStart(event) {
       event.dataTransfer.setData('pokemon', JSON.stringify(this.pokemonCard))
     },
+
     async fetchPokemonData(pokemonName) {
       try {
-        const data = await ApiHandler.fetchPokemon(pokemonName);
+        const data = await ApiHandler.fetchPokemon(pokemonName)
         if (data) {
-          this.pokemonCard.name = data.name;
-          this.pokemonCard.picture = data.sprites.front_default;
+          this.pokemonCard = data
         }
       } catch (error) {
-        console.error('Error fetching Pokemon data:', error);
+        console.error('Error fetching Pokemon data:', error)
       }
     }
   },
+
   created() {
-    this.fetchPokemonData(this.pokemon.name);
+    this.fetchPokemonData(this.pokemon.name)
   }
 }
 </script>
