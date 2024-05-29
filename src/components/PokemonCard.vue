@@ -1,20 +1,45 @@
 <template>
   <div class="pokemon-card" draggable="true" @dragstart="onDragStart">
-    <img :src="pokemon.picture" alt="pokemon" />
-    <p>{{ pokemon.name }}</p>
+    <img :src="pokemonCard.picture" alt="pokemon" />
+    <p>{{ pokemonCard.name }}</p>
   </div>
 </template>
 
 <script>
+import ApiHandler from '@/services/ApiHandler.js'
+
 export default {
   name: 'PokemonCard',
+
+  data() {
+    return {
+      pokemonCard: {
+        name: '',
+        picture: ''
+      },
+    }
+  },
   props: {
     pokemon: Object
   },
   methods: {
     onDragStart(event) {
-      event.dataTransfer.setData('pokemon', JSON.stringify(this.pokemon))
+      event.dataTransfer.setData('pokemon', JSON.stringify(this.pokemonCard))
+    },
+    async fetchPokemonData(pokemonName) {
+      try {
+        const data = await ApiHandler.fetchPokemon(pokemonName);
+        if (data) {
+          this.pokemonCard.name = data.name;
+          this.pokemonCard.picture = data.sprites.front_default;
+        }
+      } catch (error) {
+        console.error('Error fetching Pokemon data:', error);
+      }
     }
+  },
+  created() {
+    this.fetchPokemonData(this.pokemon.name);
   }
 }
 </script>

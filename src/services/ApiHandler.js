@@ -42,14 +42,13 @@ class ApiHandler {
    * @param limit maximum number of Pokémon to fetch
    * @returns {Promise<*[]|null>}
    */
-  // Récupérer une liste de pokémons avec un index et une limite
   static async fetchPokemonList(offset = 0, limit = 20) {
     const apiHandlerInstance = new ApiHandler()
     const res = await apiHandlerInstance.axiosInstance.get(
       `pokemon?offset=${offset}&limit=${limit}`
     )
     if (res.status === 200) {
-      return res.data.results // Make sure to return the `results` array
+      return res.data.results
     }
     return null
   }
@@ -59,7 +58,6 @@ class ApiHandler {
    * @param pokemon can be either the id or the name of the Pokémon we want to fetch
    * @returns {Promise<any|null>}
    */
-  // Récupérer un pokémon par son nom
   static async fetchPokemon(pokemon) {
     const apiHandlerInstance = new ApiHandler()
     const res = await apiHandlerInstance.axiosInstance.get(`pokemon/${pokemon}`)

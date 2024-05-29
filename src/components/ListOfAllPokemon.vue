@@ -2,7 +2,8 @@
   <section>
     <div class="text-center">
       <v-autocomplete
-        :items="pokemons"
+        v-model="searchQuery"
+        :items="searchResults"
         item-title="name"
         item-value="id"
         class="text-white"
@@ -11,14 +12,20 @@
         variant="outlined"
         prepend-inner-icon="mdi-magnify"
         no-data-text="Aucun pokémon trouvé"
+        @input="updateSearchResults"
         @update:modelValue="searchPokemon($event)"
       />
     </div>
 
     <div class="list-container">
-      <div class="pokemon-info" v-for="pokemon in filteredPokemons" :key="pokemon.id">
+      <div class="pokemon-info" v-for="pokemon in filteredPokemons" :key="pokemon.name">
         <PokemonCard :pokemon="pokemon" />
       </div>
+    </div>
+
+    <div class="pagination">
+      <button @click="prevPage" :disabled="offset === 0">Previous</button>
+      <button @click="nextPage">Next</button>
     </div>
   </section>
 </template>
@@ -34,29 +41,56 @@ export default {
   data() {
     return {
       pokemons: [],
-      filteredPokemons: []
+      filteredPokemons: [],
+      searchResults: [],
+      searchQuery: '',  // This is used for v-model binding
+      offset: 0,
+      limit: 24,
     }
   },
 
   methods: {
     async loadAllPokemons() {
-      this.pokemons = await apiHandler.fetchAllPokemonWithPictures()
-      this.filteredPokemons = this.pokemons
+      const data = await apiHandler.fetchPokemonList(this.offset, this.limit);
+      if (data) {
+        this.pokemons = [...this.pokemons, ...data];
+        this.filteredPokemons = this.pokemons;
+      }
     },
 
-    searchPokemon(search) {
+    async searchPokemon(search) {
       if (!search) {
-        this.filteredPokemons = this.pokemons
+        this.filteredPokemons = this.pokemons;
       } else {
-        this.filteredPokemons = this.pokemons.filter((pokemon) => {
-          return pokemon.name.toLowerCase().includes(search.toLowerCase())
-        })
+        const searchResults = await apiHandler.searchPokemonByNamePrefix(search);
+        this.filteredPokemons = searchResults || [];
+      }
+    },
+
+    async updateSearchResults(search) {
+      if (search.data) {
+        const searchResults = await apiHandler.searchPokemonByNamePrefix(search.data);
+        this.searchResults = searchResults || [];
+      } else {
+        this.searchResults = this.pokemons;
+      }
+    },
+
+    async nextPage() {
+      this.offset += this.limit;
+      await this.loadAllPokemons();
+    },
+
+    async prevPage() {
+      if (this.offset >= this.limit) {
+        this.offset -= this.limit;
+        await this.loadAllPokemons();
       }
     }
   },
 
-  created() {
-    this.loadAllPokemons()
+  async created() {
+    await this.loadAllPokemons();
   }
 }
 </script>
@@ -84,7 +118,29 @@ section {
     overflow: auto;
     width: 100%;
   }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    button {
+      background-color: #0a141e;
+      border: 1px solid white;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      margin: 0 10px;
+      padding: 10px 20px;
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    }
+  }
 }
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -101,3 +157,4 @@ section {
   cursor: pointer;
 }
 </style>
+
