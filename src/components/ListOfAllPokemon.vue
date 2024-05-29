@@ -17,16 +17,16 @@
       />
     </div>
 
-    <div class="list-container">
+    <div ref="listContainer" class="list-container">
       <div class="pokemon-info" v-for="pokemon in filteredPokemons" :key="pokemon.name">
         <PokemonCard :pokemon="pokemon" />
       </div>
     </div>
 
-    <div class="pagination">
+<!--    <div class="pagination">
       <button @click="prevPage" :disabled="offset === 0">Previous</button>
       <button @click="nextPage">Next</button>
-    </div>
+    </div>-->
   </section>
 </template>
 
@@ -46,16 +46,19 @@ export default {
       searchQuery: '',  // This is used for v-model binding
       offset: 0,
       limit: 24,
+      loading: false,
     }
   },
 
   methods: {
     async loadAllPokemons() {
+      this.loading = true;
       const data = await apiHandler.fetchPokemonList(this.offset, this.limit);
       if (data) {
         this.pokemons = [...this.pokemons, ...data];
         this.filteredPokemons = this.pokemons;
       }
+      this.loading = false;
     },
 
     async searchPokemon(search) {
@@ -77,6 +80,7 @@ export default {
     },
 
     async nextPage() {
+      if (this.loading) return;
       this.offset += this.limit;
       await this.loadAllPokemons();
     },
@@ -86,11 +90,26 @@ export default {
         this.offset -= this.limit;
         await this.loadAllPokemons();
       }
+    },
+
+    handleScroll() {
+      const container = this.$refs.listContainer;
+      if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+        this.nextPage();
+      }
     }
   },
 
   async created() {
     await this.loadAllPokemons();
+  },
+
+  mounted() {
+    this.$refs.listContainer.addEventListener('scroll', this.handleScroll);
+  },
+
+  beforeUnmount() {
+    this.$refs.listContainer.removeEventListener('scroll', this.handleScroll);
   }
 }
 </script>
