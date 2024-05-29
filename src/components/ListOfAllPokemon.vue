@@ -2,7 +2,8 @@
   <section>
     <div class="text-center">
       <v-autocomplete
-        :items="pokemons"
+        v-model="searchQuery"
+        :items="searchResults"
         item-title="name"
         item-value="id"
         class="text-white"
@@ -11,6 +12,7 @@
         variant="outlined"
         prepend-inner-icon="mdi-magnify"
         no-data-text="Aucun pokémon trouvé"
+        @input="updateSearchResults"
         @update:modelValue="searchPokemon($event)"
       />
     </div>
@@ -40,6 +42,8 @@ export default {
     return {
       pokemons: [],
       filteredPokemons: [],
+      searchResults: [],
+      searchQuery: '',  // This is used for v-model binding
       offset: 0,
       limit: 24,
     }
@@ -47,17 +51,28 @@ export default {
 
   methods: {
     async loadAllPokemons() {
-      this.pokemons = await apiHandler.fetchPokemonList(this.offset, this.limit);
-      this.filteredPokemons = this.pokemons
+      const data = await apiHandler.fetchPokemonList(this.offset, this.limit);
+      if (data) {
+        this.pokemons = [...this.pokemons, ...data];
+        this.filteredPokemons = this.pokemons;
+      }
     },
 
-    searchPokemon(search) {
+    async searchPokemon(search) {
       if (!search) {
-        this.filteredPokemons = this.pokemons
+        this.filteredPokemons = this.pokemons;
       } else {
-        this.filteredPokemons = this.pokemons.filter((pokemon) => {
-          return pokemon.name.toLowerCase().includes(search.toLowerCase())
-        })
+        const searchResults = await apiHandler.searchPokemonByNamePrefix(search);
+        this.filteredPokemons = searchResults || [];
+      }
+    },
+
+    async updateSearchResults(search) {
+      if (search.data) {
+        const searchResults = await apiHandler.searchPokemonByNamePrefix(search.data);
+        this.searchResults = searchResults || [];
+      } else {
+        this.searchResults = this.pokemons;
       }
     },
 
@@ -74,8 +89,8 @@ export default {
     }
   },
 
-  created() {
-    this.loadAllPokemons()
+  async created() {
+    await this.loadAllPokemons();
   }
 }
 </script>
