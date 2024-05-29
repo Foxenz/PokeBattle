@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     onDragStart(event) {
-      event.dataTransfer.setData('pokemon', JSON.stringify(this.pokemon))
+      event.dataTransfer.setData('pokemon', JSON.stringify(this.pokemonCard))
     },
     async fetchPokemonData(pokemonName) {
       try {
