@@ -1,45 +1,62 @@
 <template>
-    <div>
-        <v-dialog max-width="500">
-            <template v-slot:activator="{ props: activatorProps }">
-                <v-btn v-bind="activatorProps" color="surface-variant" text="Show Details" variant="flat"></v-btn>
-            </template>
-
-            <template v-slot:default="{ isActive }">
-                <v-card title="Dialog">
-                    <v-card-text>
-                        hello
-                    </v-card-text>
-
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-
-                        <v-btn text="Close Dialog" @click="isActive.value = false"></v-btn>
-                    </v-card-actions>
-                </v-card>
-            </template>
-        </v-dialog>
-    </div>
+    <!-- The dialog component that will appear when is_active is true -->
+    <v-dialog v-model="is_active" max-width="500">
+        <!-- The card component inside the dialog -->
+        <v-card>
+            <!-- Card title displaying the name of the item -->
+            <v-card-title>{{ item.name }}</v-card-title>
+            <!-- Card content -->
+            <v-card-text>
+                <!-- Image of the item -->
+                <v-img :src="item.imageUrl" contain height="200px"></v-img>
+                <!-- Description of the item, or a default message if no description is provided -->
+                <p>{{ item.description || 'No description found' }}</p>
+            </v-card-text>
+            <!-- Actions section of the card -->
+            <v-card-actions>
+                <!-- Spacer to push the button to the right -->
+                <v-spacer></v-spacer>
+                <!-- Close button -->
+                <v-btn text @click="closeModal">Close</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
 </template>
 
 <script>
 export default {
-    name: 'Modal-item',
+    name: 'ModalComponent',
     props: {
-        modalData: Object,
+        // The item to display in the modal, passed as a prop
+        item: Object,
+        // The initial active state of the modal, passed as a prop
         isActive: Boolean,
     },
     data() {
         return {
-
-        }
+            // Local data property to track the active state of the modal
+            is_active: this.isActive,
+        };
+    },
+    watch: {
+        // Watcher to update local is_active when isActive prop changes
+        isActive(val) {
+            this.is_active = val;
+        },
+        // Watcher to emit 'close' event when local is_active is set to false
+        is_active(val) {
+            if (!val) {
+                this.$emit('close');
+            }
+        },
     },
     methods: {
+        // Method to close the modal by setting is_active to false
         closeModal() {
-            this.$emit('update:isActive', false);
-        }
-    }
-}
+            this.is_active = false;
+        },
+    },
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
