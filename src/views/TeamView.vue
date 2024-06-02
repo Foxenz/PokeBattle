@@ -1,12 +1,15 @@
 <template>
   <NavBar />
   <main>
-    <h1>{{ title }}</h1>
+    <div class="fixed-component">
+      <UserTeam class="user-team" />
+    </div>
   </main>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
+import UserTeam from '@/components/UserTeam.vue'
 export default {
   name: 'TeamView',
 
@@ -17,6 +20,7 @@ export default {
   },
 
   components: {
+    UserTeam,
     NavBar
   }
 }
