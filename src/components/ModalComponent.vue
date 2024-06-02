@@ -4,14 +4,26 @@
         <!-- The card component inside the dialog -->
         <v-card>
             <!-- Card title displaying the name of the item -->
-            <v-card-title>{{ item.name }}</v-card-title>
+            <v-container>
+                <v-card-title>{{ item.name }}</v-card-title>
+                <v-card-text>
+                    <!-- Image of the item -->
+                    <v-img :src="item.imageUrl" contain height="100px">
+                        <template v-slot:placeholder>
+                            <div class="d-flex align-center justify-center fill-height">
+                                <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+                            </div>
+                        </template>
+                    </v-img>
+                    <!-- Description of the item, or a default message if no description is provided -->
+                    <p>{{ item.description || 'No description found' }}</p>
+                </v-card-text>
+            </v-container>
+            <v-container>
+                Abilities goes here with flex
+            </v-container>
             <!-- Card content -->
-            <v-card-text>
-                <!-- Image of the item -->
-                <v-img :src="item.imageUrl" contain height="200px"></v-img>
-                <!-- Description of the item, or a default message if no description is provided -->
-                <p>{{ item.description || 'No description found' }}</p>
-            </v-card-text>
+
             <!-- Actions section of the card -->
             <v-card-actions>
                 <!-- Spacer to push the button to the right -->
