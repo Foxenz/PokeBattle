@@ -6,7 +6,7 @@
     <img :src="pokemonCard.sprites.front_default" alt="pokemon" />
     <p class="text-capitalize">{{ pokemonCard.name }}</p>
     <div class="types w-100 d-flex justify-space-around">
-      <p class="type" :class="type.type.name" v-for="type in pokemonCard.types">
+      <p class="type" :class="type.type.name" v-for="type in pokemonCard.types" :key="type">
         {{ type.type.name }}
       </p>
     </div>
