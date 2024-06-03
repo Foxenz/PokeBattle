@@ -1,8 +1,15 @@
 <template>
-  <div v-if="!loading" class="pokemon-card" draggable="true" @dragstart="onDragStart">
+  <div
+    v-if="!loading"
+    class="pokemon-card"
+    :class="pokemonCard.types[0].type.name + '-bg'"
+    draggable="true"
+    @dragstart="onDragStart"
+  >
     <div class="w-100 text-right">
       <v-btn :to="'/info-pokemon/' + pokemonCard.id" icon="mdi-information" variant="plain"></v-btn>
     </div>
+
     <img :src="pokemonCard.sprites.front_default" alt="pokemon" />
     <p class="text-capitalize mb-3">{{ pokemonCard.name }}</p>
     <div class="types w-100 d-flex justify-space-around">
@@ -69,13 +76,11 @@ export default {
   border: 2px solid white;
   padding: 10px;
   margin: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   color: white;
-}
 
-.pokemon-card:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>

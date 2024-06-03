@@ -117,3 +117,138 @@ body {
 .bug {
     background-color: #ACC23E;
 }
+
+.grass-bg {
+    background-image: url('../assets/images/backgrounds/grass.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.normal-bg {
+    background-image: url('../assets/images/backgrounds/normal.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fighting-bg {
+    background-image: url('../assets/images/backgrounds/fighting.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.poison-bg
+{
+    background-image: url('../assets/images/backgrounds/poison.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ground-bg
+{
+    background-image: url('../assets/images/backgrounds/ground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.rock-bg
+{
+    background-image: url('../assets/images/backgrounds/rock.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ghost-bg
+{
+    background-image: url('../assets/images/backgrounds/ghost.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.steel-bg
+{
+    background-image: url('../assets/images/backgrounds/steel.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fire-bg
+{
+    background-image: url('../assets/images/backgrounds/fire.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.water-bg
+{
+    background-image: url('../assets/images/backgrounds/water.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.electric-bg
+{
+    background-image: url('../assets/images/backgrounds/electric.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.psychic-bg
+{
+    background-image: url('../assets/images/backgrounds/psychic.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ice-bg
+{
+    background-image: url('../assets/images/backgrounds/ice.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.dragon-bg
+{
+    background-image: url('../assets/images/backgrounds/dragon.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.dark-bg
+{
+    background-image: url('../assets/images/backgrounds/dark.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fairy-bg
+{
+    background-image: url('../assets/images/backgrounds/fairy.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/*.unknown-bg*/
+/*{*/
+
+/*}*/
+
+/*.shadow-bg*/
+/*{*/
+/*    */
+/*}*/
+
+.flying-bg
+{
+    background-image: url('../assets/images/backgrounds/flying.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bug-bg
+{
+    background-image: url('../assets/images/backgrounds/bug.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
