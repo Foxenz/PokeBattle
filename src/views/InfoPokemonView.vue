@@ -5,13 +5,13 @@
       <v-container class="d-flex">
         <v-row>
           <!-- IMAGE INFO -->
-          <v-col cols="12" md="6">
+          <v-col cols="12" md="6" class="bg-blue-grey-darken-2 mb-1">
             <v-sheet class="ma-2 pa-2">
               <v-img :src="pokemonInfo.sprites.front_default" :height="395" cover></v-img>
             </v-sheet>
           </v-col>
           <!-- Attributes INFO -->
-          <v-col cols="12" md="6">
+          <v-col cols="12" md="6" class="bg-blue-grey-darken-2 mb-1">
             <v-sheet class="ma-1 pa-2 bg-yellow-accent-4">
               <v-card-title>
                 <p class="text-h4 font-weight-bold text-uppercase text-center">{{ pokemonInfo.name }}</p>
@@ -44,8 +44,8 @@
             </v-sheet>
           </v-col>
           <!-- BASE STATUS INFO -->
-          <v-col cols="12">
-            <v-sheet class="my-2">
+          <v-col cols="12" class="bg-blue-grey-darken-2">
+            <v-sheet class="my-2 ">
               <v-card-title>
                 <p class="text-h6 text-center font-weight-bold">BASE STATS</p>
                 <v-sheet v-for="stat in pokemonInfo.stats" :key="stat.stat.name">
