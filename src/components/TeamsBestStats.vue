@@ -140,4 +140,16 @@ export default {
 .stat-card p {
     margin: 4px 0;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .stats-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-card {
+        width: 80%;
+    }
+}
 </style>

@@ -4,8 +4,9 @@
         <div class="fixed-component">
             <UserTeam class="user-team" />
         </div>
-        <div class="flexible-component">
+        <div class="main-component">
             <TeamsBestStats />
+            <TeamTypesStrengthWeakness />
         </div>
     </main>
 </template>
@@ -14,6 +15,7 @@
 import NavBar from '@/components/NavBar.vue'
 import UserTeam from '@/components/UserTeam.vue'
 import TeamsBestStats from '@/components/TeamsBestStats.vue'
+import TeamTypesStrengthWeakness from '@/components/TeamTypesStrengthWeakness.vue'
 
 export default {
     name: 'TeamView',
@@ -27,7 +29,8 @@ export default {
     components: {
         UserTeam,
         NavBar,
-        TeamsBestStats
+        TeamsBestStats,
+        TeamTypesStrengthWeakness
     }
 }
 </script>
@@ -45,10 +48,11 @@ main {
     align-items: center;
 }
 
-.flexible-component {
-    flex: 1;
+.main-component {
+    flex: 0 0 auto;
+    flex-direction: column;
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 </style>

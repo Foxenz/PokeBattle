@@ -19,208 +19,39 @@ class TypesHandler {
             dark: 1,
             steel: 1,
             fairy: 1
-        }
+        };
     }
 
-    static applyWeakness(type) {
-        if (type === 'normal') {
-            // Weak to:
-            this.types.fighting = this.types.fighting * 2
-            // Resistant to:
-            this.types.rock = this.types.rock / 2
-            this.types.steel = this.types.steel / 2
-            // No damage from:
-            this.types.ghost = 0
-        }
-        if (type === 'fire') {
-            // Weak to:
-            this.types.ground = this.types.ground * 2
-            this.types.water = this.types.water * 2
-            this.types.rock = this.types.rock * 2
-            // Resistant to:
-            this.types.bug = this.types.bug / 2
-            this.types.steel = this.types.steel / 2
-            this.types.fire = this.types.fire / 2
-            this.types.grass = this.types.grass / 2
-            this.types.fairy = this.types.fairy / 2
-            this.types.ice = this.types.ice / 2
-        }
-        if (type === 'water') {
-            // Weak to:
-            this.types.electric = this.types.electric * 2
-            this.types.grass = this.types.grass * 2
-            // Resistant to:
-            this.types.fire = this.types.fire / 2
-            this.types.water = this.types.water / 2
-            this.types.steel = this.types.steel / 2
-            this.types.ice = this.types.ice / 2
-        }
-        if (type === 'grass') {
-            // Weak to:
-            this.types.fire = this.types.fire * 2
-            this.types.bug = this.types.bug * 2
-            this.types.flying = this.types.flying * 2
-            this.types.ice = this.types.ice * 2
-            this.types.poison = this.types.poison * 2
-            // Resistant to:
-            this.types.ground = this.types.ground / 2
-            this.types.electric = this.types.electric / 2
-            this.types.grass = this.types.grass / 2
-            this.types.water = this.types.water / 2
-        }
-        if (type === 'electric') {
-            // Weak to:
-            this.types.ground = this.types.ground * 2
-            // Resistant to:
-            this.types.flying = this.types.flying / 2
-            this.types.steel = this.types.steel / 2
-            this.types.electric = this.types.electric / 2
-        }
-        if (type === 'ice') {
-            // Weak to:
-            this.types.fire = this.types.fire * 2
-            this.types.fighting = this.types.fighting * 2
-            this.types.rock = this.types.rock * 2
-            this.types.steel = this.types.steel * 2
-            // Resistant to:
-            this.types.ice = this.types.ice / 2
-        }
-        if (type === 'fighting') {
-            // Weak to:
-            this.types.normal = this.types.normal * 2
-            // No damage from:
-            this.types.ghost = 0
-        }
-        if (type === 'poison') {
-            // Weak to:
-            this.types.ground = this.types.ground * 2
-            this.types.psychic = this.types.psychic * 2
-            // Resistant to:
-            this.types.poison = this.types.poison / 2
-            this.types.fighting = this.types.fighting / 2
-            this.types.bug = this.types.bug / 2
-            this.types.grass = this.types.grass / 2
-            this.types.fairy = this.types.fairy / 2
-        }
-        if (type === 'ground') {
-            // Weak to:
-            this.types.water = this.types.water * 2
-            this.types.grass = this.types.grass * 2
-            this.types.ice = this.types.ice * 2
-            // Resistant to:
-            this.types.poison = this.types.poison / 2
-            this.types.rock = this.types.rock / 2
-            // No damage from:
-            this.types.electric = 0
-        }
-        if (type === 'flying') {
-            // Weak to:
-            this.types.rock = this.types.rock * 2
-            this.types.electric = this.types.electric * 2
-            this.types.ice = this.types.ice * 2
-            // Resistant to:
-            this.types.fighting = this.types.fighting / 2
-            this.types.bug = this.types.bug / 2
-            this.types.grass = this.types.grass / 2
-            // No damage from:
-            this.types.ground = 0
-        }
-        if (type === 'psychic') {
-            // Weak to:
-            this.types.ghost = this.types.ghost * 2
-            this.types.bug = this.types.bug * 2
-            this.types.dark = this.types.dark * 2
-            // Resistant to:
-            this.types.fighting = this.types.fighting / 2
-            this.types.psychic = this.types.psychic / 2
-        }
-        if (type === 'bug') {
-            // Weak to:
-            this.types.flying = this.types.flying * 2
-            this.types.fire = this.types.fire * 2
-            this.types.rock = this.types.rock * 2
-            // Resistant to:
-            this.types.fighting = this.types.fighting / 2
-            this.types.grass = this.types.grass / 2
-            this.types.ground = this.types.ground / 2
-        }
-        if (type === 'rock') {
-            // Weak to:
-            this.types.fighting = this.types.fighting * 2
-            this.types.ground = this.types.ground * 2
-            this.types.steel = this.types.steel * 2
-            this.types.water = this.types.water * 2
-            this.types.grass = this.types.grass * 2
-            // Resistant to:
-            this.types.normal = this.types.normal / 2
-            this.types.flying = this.types.flying / 2
-            this.types.poison = this.types.poison / 2
-            this.types.fire = this.types.fire / 2
-        }
-        if (type === 'ghost') {
-            // Weak to:
-            this.types.ghost = this.types.ghost * 2
-            this.types.dark = this.types.dark * 2
-            // Resistant to:
-            this.types.poison = this.types.poison / 2
-            this.types.bug = this.types.bug / 2
-            // No damage from:
-            this.types.normal = 0
-            this.types.fighting = 0
-        }
-        if (type === 'dragon') {
-            // Weak to:
-            this.types.ice = this.types.ice * 2
-            this.types.dragon = this.types.dragon * 2
-            this.types.fairy = this.types.fairy * 2
-            // Resistant to:
-            this.types.fire = this.types.fire / 2
-            this.types.water = this.types.water / 2
-            this.types.grass = this.types.grass / 2
-            this.types.electric = this.types.electric / 2
-        }
-        if (type === 'dark') {
-            // Weak to:
-            this.types.fighting = this.types.fighting * 2
-            this.types.fairy = this.types.fairy * 2
-            this.types.bug = this.types.bug * 2
-            // Resistant to:
-            this.types.ghost = this.types.ghost / 2
-            this.types.dark = this.types.dark / 2
-            // No damage from:
-            this.types.psychic = 0
-        }
-        if (type === 'steel') {
-            // Weak to:
-            this.types.fighting = this.types.fighting * 2
-            this.types.ground = this.types.ground * 2
-            this.types.fire = this.types.fire * 2
-            // Resistant to:
-            this.types.normal = this.types.normal / 2
-            this.types.flying = this.types.flying / 2
-            this.types.rock = this.types.rock / 2
-            this.types.bug = this.types.bug / 2
-            this.types.steel = this.types.steel / 2
-            this.types.grass = this.types.grass / 2
-            this.types.psychic = this.types.psychic / 2
-            this.types.ice = this.types.ice / 2
-            this.types.dragon = this.types.dragon / 2
-            this.types.fairy = this.types.fairy / 2
-            // No damage from:
-            this.types.poison = 0
-        }
-        if (type === 'fairy') {
-            // Weak to:
-            this.types.poison = this.types.poison * 2
-            this.types.steel = this.types.steel * 2
-            // Resistant to:
-            this.types.fighting = this.types.fighting / 2
-            this.types.bug = this.types.bug / 2
-            this.types.dark = this.types.dark / 2
-            // No damage from:
-            this.types.dragon = 0
+    applyWeakness(type) {
+        const typeEffects = {
+            normal: { weak: ['fighting'], resist: ['rock', 'steel'], immune: ['ghost'] },
+            fire: { weak: ['ground', 'water', 'rock'], resist: ['bug', 'steel', 'fire', 'grass', 'fairy', 'ice'] },
+            water: { weak: ['electric', 'grass'], resist: ['fire', 'water', 'steel', 'ice'] },
+            grass: { weak: ['fire', 'bug', 'flying', 'ice', 'poison'], resist: ['ground', 'electric', 'grass', 'water'] },
+            electric: { weak: ['ground'], resist: ['flying', 'steel', 'electric'] },
+            ice: { weak: ['fire', 'fighting', 'rock', 'steel'], resist: ['ice'] },
+            fighting: { weak: ['flying', 'psychic', 'fairy'], resist: ['rock', 'bug', 'dark'], immune: ['ghost'] },
+            poison: { weak: ['ground', 'psychic'], resist: ['poison', 'fighting', 'bug', 'grass', 'fairy'] },
+            ground: { weak: ['water', 'grass', 'ice'], resist: ['poison', 'rock'], immune: ['electric'] },
+            flying: { weak: ['rock', 'electric', 'ice'], resist: ['fighting', 'bug', 'grass'], immune: ['ground'] },
+            psychic: { weak: ['bug', 'ghost', 'dark'], resist: ['fighting', 'psychic'] },
+            bug: { weak: ['flying', 'fire', 'rock'], resist: ['fighting', 'grass', 'ground'] },
+            rock: { weak: ['fighting', 'ground', 'steel', 'water', 'grass'], resist: ['normal', 'flying', 'poison', 'fire'] },
+            ghost: { weak: ['ghost', 'dark'], resist: ['poison', 'bug'], immune: ['normal', 'fighting'] },
+            dragon: { weak: ['ice', 'dragon', 'fairy'], resist: ['fire', 'water', 'grass', 'electric'] },
+            dark: { weak: ['fighting', 'bug', 'fairy'], resist: ['ghost', 'dark'], immune: ['psychic'] },
+            steel: { weak: ['fighting', 'ground', 'fire'], resist: ['normal', 'flying', 'rock', 'bug', 'steel', 'grass', 'psychic', 'ice', 'dragon', 'fairy'], immune: ['poison'] },
+            fairy: { weak: ['poison', 'steel'], resist: ['fighting', 'bug', 'dark'], immune: ['dragon'] }
+        };
+
+        if (typeEffects[type]) {
+            typeEffects[type].weak.forEach(t => this.types[t] *= 2);
+            typeEffects[type].resist.forEach(t => this.types[t] /= 2);
+            if (typeEffects[type].immune) {
+                typeEffects[type].immune.forEach(t => this.types[t] = 0);
+            }
         }
     }
 }
 
-export default TypesHandler
+export default TypesHandler;
