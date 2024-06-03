@@ -1,12 +1,12 @@
 <template>
   <section>
-    <div class="text-center">
+    <div class="text-center d-flex flex-column align-center">
       <v-autocomplete
         v-model="searchQuery"
         :items="searchResults"
         item-title="name"
         item-value="id"
-        class="text-white"
+        class="text-white w-50"
         clearable
         label="Rechercher un pokémon"
         variant="outlined"
@@ -97,6 +97,7 @@ export default {
 
   async created() {
     await this.loadAllPokemons()
+    this.searchResults = this.pokemons
   },
 
   mounted() {
