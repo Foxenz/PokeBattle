@@ -2,15 +2,11 @@
   <NavBar />
 
   <main class="d-flex flex-column align-center justify-center">
-    <h1 class="pokemon-font-solid text-amber-accent-2">
-      Bienvenue sur votre créateur d'équipe Pokémon
-    </h1>
+    <h1 class="pokemon-font-solid text-amber-accent-2">Welcome to the Pokemon Team Builder</h1>
     <v-carousel class="w-66 mt-5" hide-delimiters>
       <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src"></v-carousel-item>
     </v-carousel>
-    <v-btn class="mt-5 text-yellow" variant="outlined" to="/creation-team">
-      Créer votre équipe</v-btn
-    >
+    <v-btn class="mt-5 text-yellow" variant="outlined" to="/creation-team"> Create your team</v-btn>
   </main>
 </template>
 
@@ -63,11 +59,11 @@ main {
 h1 {
   font-size: 2.5rem;
   text-shadow:
-    0 0 4px grey,
-    0 0 8px grey,
-    0 0 12px grey,
-    0 0 16px grey,
-    0 0 20px grey,
-    0 0 28px grey;
+    0 0 2px grey,
+    0 0 6px grey,
+    0 0 10px grey,
+    0 0 14px grey,
+    0 0 18px grey,
+    0 0 26px grey;
 }
 </style>
