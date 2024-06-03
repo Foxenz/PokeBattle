@@ -14,7 +14,7 @@
           <v-col cols="12" md="6" class="bg-blue-grey-darken-2 mb-1">
             <v-sheet class="ma-1 pa-2 bg-yellow-accent-4">
               <v-card-title>
-                <p class="text-h4 font-weight-bold text-uppercase text-center">{{ pokemonInfo.name }}</p>
+                <p class="text-h4 font-weight-bold text-uppercase text-center font">{{ pokemonInfo.name }}</p>
               </v-card-title>
               <v-card class="my-1">
                 <v-card-title>
@@ -132,5 +132,9 @@ export default {
 .transparent-card {
   background-color: transparent !important;
   box-shadow: none;
+}
+
+.font {
+  font-family: 'Pokemon-Hollow', sans-serif;
 }
 </style>
