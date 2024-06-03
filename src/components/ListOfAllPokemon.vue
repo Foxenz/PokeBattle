@@ -22,11 +22,6 @@
         <PokemonCard :pokemon="pokemon" />
       </div>
     </div>
-
-<!--    <div class="pagination">
-      <button @click="prevPage" :disabled="offset === 0">Previous</button>
-      <button @click="nextPage">Next</button>
-    </div>-->
   </section>
 </template>
 
@@ -43,73 +38,73 @@ export default {
       pokemons: [],
       filteredPokemons: [],
       searchResults: [],
-      searchQuery: '',  // This is used for v-model binding
+      searchQuery: '', // This is used for v-model binding
       offset: 0,
       limit: 24,
-      loading: false,
+      loading: false
     }
   },
 
   methods: {
     async loadAllPokemons() {
-      this.loading = true;
-      const data = await apiHandler.fetchPokemonList(this.offset, this.limit);
+      this.loading = true
+      const data = await apiHandler.fetchPokemonList(this.offset, this.limit)
       if (data) {
-        this.pokemons = [...this.pokemons, ...data];
-        this.filteredPokemons = this.pokemons;
+        this.pokemons = [...this.pokemons, ...data]
+        this.filteredPokemons = this.pokemons
       }
-      this.loading = false;
+      this.loading = false
     },
 
     async searchPokemon(search) {
       if (!search) {
-        this.filteredPokemons = this.pokemons;
+        this.filteredPokemons = this.pokemons
       } else {
-        const searchResults = await apiHandler.searchPokemonByNamePrefix(search);
-        this.filteredPokemons = searchResults || [];
+        const searchResults = await apiHandler.searchPokemonByNamePrefix(search)
+        this.filteredPokemons = searchResults || []
       }
     },
 
     async updateSearchResults(search) {
       if (search.data) {
-        const searchResults = await apiHandler.searchPokemonByNamePrefix(search.data);
-        this.searchResults = searchResults || [];
+        const searchResults = await apiHandler.searchPokemonByNamePrefix(search.data)
+        this.searchResults = searchResults || []
       } else {
-        this.searchResults = this.pokemons;
+        this.searchResults = this.pokemons
       }
     },
 
     async nextPage() {
-      if (this.loading) return;
-      this.offset += this.limit;
-      await this.loadAllPokemons();
+      if (this.loading) return
+      this.offset += this.limit
+      await this.loadAllPokemons()
     },
 
     async prevPage() {
       if (this.offset >= this.limit) {
-        this.offset -= this.limit;
-        await this.loadAllPokemons();
+        this.offset -= this.limit
+        await this.loadAllPokemons()
       }
     },
 
     handleScroll() {
-      const container = this.$refs.listContainer;
+      const container = this.$refs.listContainer
       if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
-        this.nextPage();
+        this.nextPage()
       }
     }
   },
 
   async created() {
-    await this.loadAllPokemons();
+    await this.loadAllPokemons()
   },
 
   mounted() {
-    this.$refs.listContainer.addEventListener('scroll', this.handleScroll);
+    this.$refs.listContainer.addEventListener('scroll', this.handleScroll)
   },
 
   beforeUnmount() {
-    this.$refs.listContainer.removeEventListener('scroll', this.handleScroll);
+    this.$refs.listContainer.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -176,4 +171,3 @@ section {
   cursor: pointer;
 }
 </style>
-
