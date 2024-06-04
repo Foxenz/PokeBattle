@@ -6,8 +6,8 @@
         <v-row>
           <!-- IMAGE INFO -->
           <v-col cols="12" md="6" class="bg-blue-grey-darken-2 mb-1">
-            <v-card class="ma-2 pa-2">
-              <v-img :src="pokemonInfo.sprites.front_default" :height="395" cover>
+            <v-card class="ma-2 pa-2 bg-blue-grey-darken-1">
+              <v-img :src="pokemonInfo.sprites.front_default" :height="395" cover class="bg-blue-grey-darken-4">
                 <template v-slot:placeholder>
                   <div class="d-flex align-center justify-center fill-height">
                     <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
@@ -22,7 +22,7 @@
               <v-card-title>
                 <p class="text-h4 font-weight-bold text-uppercase text-center font">{{ pokemonInfo.name }}</p>
               </v-card-title>
-              <v-card class="my-1">
+              <v-card class="my-1 bg-blue-grey-darken-4">
                 <v-card-title>
                   <p class="text-h6 font-weight-bold">Ability</p>
                   <p v-for="ability in pokemonInfo.abilities" :key="ability.ability.name" class="text-capitalize">{{
@@ -30,16 +30,16 @@
                 </v-card-title>
               </v-card>
 
-              <v-card class="my-2">
+              <v-card class="my-2 bg-blue-grey-darken-4">
                 <v-card-title>
                   <p class="text-h6 font-weight-bold">Physic</p>
-                  <v-sheet>
+                  <v-sheet class="bg-blue-grey-darken-4">
                     <p class="font-weight-regular">Height: {{ pokemonInfo.height }} in</p>
                     <p class="font-weight-regular">Weight: {{ pokemonInfo.weight }} kg</p>
                   </v-sheet>
                 </v-card-title>
               </v-card>
-              <v-card class="my-2">
+              <v-card class="my-2 bg-blue-grey-darken-4">
                 <v-card-title>
                   <p class="text-h6 font-weight-bold">Type</p>
                   <v-card class="type" :class="type.type.name" v-for="type in pokemonInfo.types" :key="type">
@@ -51,10 +51,10 @@
           </v-col>
           <!-- BASE STATUS INFO -->
           <v-col cols="12" class="bg-blue-grey-darken-2">
-            <v-card class="my-2 ">
+            <v-card class="my-2 bg-blue-grey-darken-4">
               <v-card-title>
                 <p class="text-h6 text-center font-weight-bold">BASE STATS</p>
-                <v-sheet v-for="stat in pokemonInfo.stats" :key="stat.stat.name">
+                <v-sheet class="bg-blue-grey-darken-4" v-for="stat in pokemonInfo.stats" :key="stat.stat.name">
                   <p class="text-caption text-capitalize"> {{ stat.stat.name }}</p>
                   <v-progress-linear v-model="stat.base_stat" color="amber" height="25" class="my-1">
                     <strong>{{ Math.ceil(stat.base_stat) }}%</strong>
