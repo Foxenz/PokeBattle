@@ -24,24 +24,26 @@
               </v-card-title>
               <v-card class="my-1 bg-blue-grey-darken-4">
                 <v-card-title>
-                  <p class="text-h6 font-weight-bold">Ability</p>
-                  <p v-for="ability in pokemonInfo.abilities" :key="ability.ability.name" class="text-capitalize">{{
-                    ability.ability.name }}</p>
+                  <p class="text-h6 font-weight-bold text-yellow-accent-4">Abilities</p>
+                  <p v-for="ability in pokemonInfo.abilities" :key="ability.ability.name"
+                    class="text-capitalize text-subtitle-1">
+                    {{
+                      ability.ability.name }}</p>
                 </v-card-title>
               </v-card>
 
               <v-card class="my-2 bg-blue-grey-darken-4">
                 <v-card-title>
-                  <p class="text-h6 font-weight-bold">Physic</p>
+                  <p class="text-h6 font-weight-bold text-yellow-accent-4">Physic</p>
                   <v-sheet class="bg-blue-grey-darken-4">
-                    <p class="font-weight-regular">Height: {{ pokemonInfo.height }} in</p>
-                    <p class="font-weight-regular">Weight: {{ pokemonInfo.weight }} kg</p>
+                    <p class="font-weight-regular text-subtitle-1">Height: {{ pokemonInfo.height }} in</p>
+                    <p class="font-weight-regular text-subtitle-1">Weight: {{ pokemonInfo.weight }} kg</p>
                   </v-sheet>
                 </v-card-title>
               </v-card>
               <v-card class="my-2 bg-blue-grey-darken-4">
                 <v-card-title>
-                  <p class="text-h6 font-weight-bold">Type</p>
+                  <p class="text-h6 font-weight-bold text-yellow-accent-4">Type</p>
                   <v-card class="type" :class="type.type.name" v-for="type in pokemonInfo.types" :key="type">
                     {{ type.type.name }}
                   </v-card>
