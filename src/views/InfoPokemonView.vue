@@ -22,7 +22,11 @@
           </v-col>
           <!-- Attributes INFO -->
           <v-col cols="12" md="6" class="bg-blue-grey-darken-2 mb-1">
-            <v-card class="ma-3 pa-2 bg-yellow-accent-4" :height="378">
+            <v-card
+              class="ma-3 pa-2 bg-yellow-accent-4"
+              style="display: flex; flex-direction: column; justify-content: space-between"
+              :height="378"
+            >
               <v-card-title>
                 <p class="text-h4 font-weight-bold text-uppercase text-center font">
                   {{ pokemonInfo.name }}
